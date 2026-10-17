@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="ne">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f4efe6" />
+  <title>शब्द छली | Word Imposter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Khand:wght@400;500;600;700&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <div class="brand-mark" aria-hidden="true">श</div>
+      <div>
+        <p class="eyebrow">परिवारसँग खेल्ने खेल</p>
+        <h1>शब्द <span>छली</span></h1>
+      </div>
+      <button class="icon-button" id="helpButton" type="button" aria-label="खेल्ने तरिका">?</button>
+    </header>
+
+    <section class="screen active" id="setupScreen" aria-labelledby="setupTitle">
+      <div class="intro-panel">
+        <div class="sun-stamp">आजको<br>खेल</div>
+        <p class="eyebrow">एक जनालाई शब्द थाहा हुँदैन</p>
+        <h2 id="setupTitle">कसको कुरा<br><em>मिल्दैन?</em></h2>
+        <p class="intro-copy">सबैले एउटै नेपाली शब्द पाउँछन्। एक जनाले मात्र “छली” पाउँछ। कुरा गरेर छलीलाई पत्ता लगाउनुहोस्!</p>
+      </div>
+
+      <form class="setup-card" id="setupForm">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">पहिलो चरण</p>
+            <h3>खेलाडीहरू थप्नुहोस्</h3>
+          </div>
+          <span class="player-count" id="playerCount">३ जना</span>
+        </div>
+        <p class="form-note">कम्तीमा ३ जना चाहिन्छ। नाम राख्दा पालो सजिलै चिनिन्छ।</p>
+        <div class="name-list" id="nameList"></div>
+        <button class="text-button" id="addPlayerButton" type="button"><span>＋</span> अर्को खेलाडी थप्नुहोस्</button>
+        <button class="primary-button" type="submit">खेल सुरु गर्नुहोस् <span>→</span></button>
+      </form>
+    </section>
+
+    <section class="screen" id="revealScreen" aria-labelledby="revealTitle">
+      <div class="progress-row">
+        <span id="revealProgress">खेलाडी १ / ३</span>
+        <span class="privacy-pill">गोप्य राख्नुहोस्</span>
+      </div>
+      <div class="reveal-card">
+        <div class="card-pattern" aria-hidden="true"></div>
+        <div class="turn-icon">👀</div>
+        <p class="eyebrow">अब हेर्ने पालो</p>
+        <h2 id="revealTitle">खेलाडी १</h2>
+        <p class="reveal-instruction">अरूले नहेर्ने गरी तलको बटन थिच्नुहोस्।</p>
+        <button class="reveal-button" id="revealButton" type="button">मेरो शब्द हेर्नुहोस् <span>↓</span></button>
+        <div class="secret-result hidden" id="secretResult" aria-live="polite">
+          <p class="result-label" id="resultLabel">तपाईंको शब्द</p>
+          <strong id="secretWord">घर</strong>
+          <p id="resultHint">यो शब्दको बारेमा एउटा सजिलो कुरा सोच्नुहोस्।</p>
+          <button class="primary-button" id="nextPlayerButton" type="button">बुझें, अर्को खेलाडी <span>→</span></button>
+        </div>
+      </div>
+      <button class="back-button" id="backToSetup" type="button">← फेरि नाम राख्नुहोस्</button>
+    </section>
+
+    <section class="screen" id="discussionScreen" aria-labelledby="discussionTitle">
+      <div class="finish-badge">सबैको पालो सकियो ✓</div>
+      <div class="discussion-hero">
+        <div class="speech-bubble">अब<br>कुरा गरौँ!</div>
+        <p class="eyebrow">दोस्रो चरण</p>
+        <h2 id="discussionTitle">छलीलाई<br><em>पत्ता लगाउनुहोस्</em></h2>
+        <p>सबैले आफ्नो शब्दसँग मिल्ने एउटा कुरा भन्नुहोस्। तर शब्द सीधै नभन्नुहोस्!</p>
+      </div>
+      <div class="rule-strip">
+        <div><span>१</span> प्रत्येकले एउटा संकेत दिनुहोस्</div>
+        <div><span>२</span> छलफलपछि मतदान गर्नुहोस्</div>
+      </div>
+      <div class="discussion-actions">
+        <button class="primary-button" id="newRoundButton" type="button">नयाँ राउन्ड <span>↻</span></button>
+        <button class="outline-button" id="resetHistoryButton" type="button">पुराना शब्द हटाउनुहोस्</button>
+      </div>
+    </section>
+
+    <footer class="footer-note"><span class="dot"></span> शब्दहरू दोहोरिँदैनन् · फोनमै सुरक्षित हुन्छ</footer>
+  </main>
+
+  <dialog id="helpDialog">
+    <button class="dialog-close" id="closeHelp" type="button" aria-label="बन्द गर्नुहोस्">×</button>
+    <p class="eyebrow">खेल्ने तरिका</p>
+    <h2>शब्द छली</h2>
+    <ol>
+      <li>सबै खेलाडीको नाम राखेर खेल सुरु गर्नुहोस्।</li>
+      <li>एक–एक जनाले मात्र आफ्नो गोप्य कार्ड हेर्नुहोस्।</li>
+      <li>शब्द नबताईकन एउटा संकेत दिनुहोस्।</li>
+      <li>छलफलपछि सबैभन्दा शङ्कास्पद खेलाडीलाई छान्नुहोस्।</li>
+    </ol>
+    <p class="dialog-tip">ठूलो अक्षर र सजिलो नेपाली शब्द भएकाले परिवारका सबै पुस्ताले खेल्न सक्छन्।</p>
+  </dialog>
+  <script src="script.js"></script>
+</body>
+</html>
